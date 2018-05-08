@@ -1,7 +1,7 @@
 import React from 'react';
 import { AreaClosed, Line, Bar } from '@vx/shape';
 import { appleStock } from '@vx/mock-data';
-import { curveMonotoneX } from '@vx/curve';
+import { curveMonotoneX, curveNatural, curveCardinal } from '@vx/curve';
 import { LinearGradient } from '@vx/gradient';
 import { GridRows, GridColumns } from '@vx/grid';
 import { scaleTime, scaleLinear } from '@vx/scale';
@@ -9,9 +9,11 @@ import { withTooltip, Tooltip } from '@vx/tooltip';
 import { localPoint } from '@vx/event';
 import { extent, max, bisector } from 'd3-array';
 import { timeFormat } from 'd3-time-format';
-
-const stock = appleStock.slice(800);
+import {withParentSize} from '@vx/responsive'
+import {AxisBottom, AxisLeft} from '@vx/axis'
+const stock = appleStock.slice(800, 900);
 const formatDate = timeFormat("%b %d, '%y");
+console.log(stock)
 
 // accessors
 const xStock = d => new Date(d.date);
@@ -42,8 +44,8 @@ class Area extends React.Component {
   }
   render() {
     const {
-      width,
-      height,
+        parentWidth: width,
+        parentHeight: height,
       margin,
       showTooltip,
       hideTooltip,
@@ -53,7 +55,8 @@ class Area extends React.Component {
       events,
     } = this.props;
     if (width < 10) return null;
-
+   
+    
     // bounds
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
@@ -77,7 +80,7 @@ class Area extends React.Component {
             y={0}
             width={width}
             height={height}
-            fill="#32deaa"
+            fill="transparent"
             rx={14}
           />
           <defs>
@@ -90,40 +93,48 @@ class Area extends React.Component {
             >
               <stop
                 offset="0%"
-                stopColor="#FFFFFF"
+                stopColor="#00a9ff"
                 stopOpacity={1}
               />
               <stop
                 offset="100%"
-                stopColor="#FFFFFF"
-                stopOpacity={0.2}
+                stopColor="#0073ad"
+                stopOpacity={0.8}
               />
             </linearGradient>
           </defs>
-          <GridRows
-            lineStyle={{ pointerEvents: 'none' }}
-            scale={yScale}
-            width={xMax}
-            strokeDasharray="2,2"
-            stroke="rgba(255,255,255,0.3)"
-          />
-          <GridColumns
-            lineStyle={{ pointerEvents: 'none' }}
-            scale={xScale}
-            height={yMax}
-            strokeDasharray="2,2"
-            stroke="rgba(255,255,255,0.3)"
-          />
+          
+          <AxisBottom
+        scale={xScale}
+        top={yMax + margin.top}
+        left={margin.left}
+        axisClassName="axis-class"
+        labelClassName="axis-label-class"
+        tickClassName="tick-label-class"
+
+        stroke="rgba(255,255,255,0.8)"
+        tickStroke="rgba(255,255,255,0.8)"
+      />
+      <AxisLeft
+        scale={yScale}
+        top={margin.top}
+        axisClassName="axis-class"
+        labelClassName="axis-label-class"
+        tickClassName="tick-label-class"
+        left={margin.left}
+        stroke="rgba(255,255,255,0.8)"
+        tickStroke="rgba(255,255,255,0.8)"
+      />
           <AreaClosed
             data={stock}
             xScale={xScale}
             yScale={yScale}
             x={xStock}
             y={yStock}
-            strokeWidth={1}
+            strokeWidth={2}
             stroke={'url(#gradient)'}
             fill={'url(#gradient)'}
-            curve={curveMonotoneX}
+            curve={curveCardinal}
           />
           <Bar
             x={0}
@@ -219,5 +230,5 @@ class Area extends React.Component {
     );
   }
 }
-
-export default withTooltip(Area);
+let ResponsiveChart = withParentSize(Area);
+export default withTooltip(ResponsiveChart);

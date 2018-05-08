@@ -1,6 +1,8 @@
 import '../style.css'
+import 'react-tabs/style/react-tabs.css';
 import React from 'react'
 import Area from '../graph.js'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 export default class Index extends React.Component {
     render() {
         return (
@@ -11,7 +13,7 @@ export default class Index extends React.Component {
                     <div className="row">
                         <div className="third">
                             <div className="portValue">$12000</div>
-                            <div className="portName">Current Balance</div>
+                            <div className="portName" style={{textAlign: 'left'}}>Current Balance</div>
                         </div>
                         <div className="third">
                             <div className="portStat green">+7.33%</div>
@@ -22,9 +24,24 @@ export default class Index extends React.Component {
                             <div className="portName">Profit/Loss</div>
                         </div>
                     </div>
+                    <Tabs>
+    <TabList>
+      <Tab>1m</Tab>
+      <Tab>10m</Tab>
+      <Tab>30m</Tab>
+      <Tab>1h</Tab>
+      <Tab>6h</Tab>
+      <Tab>12h</Tab>
+      <Tab>24h</Tab>
+      <Tab>1w</Tab>
+      <Tab>1mo</Tab>
+      <Tab>1y</Tab>
+    </TabList>
+
+    <TabPanel>
+     
+    <div className="portGraph">
                     <Area
-                    width={500}
-                    height={300}
                     margin={{
                         top: 5,
                         left:5,
@@ -32,6 +49,13 @@ export default class Index extends React.Component {
                         bottom:5
                     }}
                      />
+                    </div>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
+                    
                 </div>
 
             </div>

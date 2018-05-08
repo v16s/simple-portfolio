@@ -7,6 +7,7 @@ body, #__next {
     height: 100vh;
     width: 100vw;
     background-color: #161637;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -44,7 +45,7 @@ body, #__next {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 27px;
-    text-align: center;
+    text-align: left;
 }
 .portName {
     margin: 2px;
@@ -72,3 +73,42 @@ body, #__next {
 .green {
     color: #00bc6e;
 }
+.portGraph{
+    height: 100%;
+
+   
+
+}
+.react-tabs {
+    height: calc(100% - 55px);
+}
+.react-tabs__tab-panel--selected {
+    height: 90%;
+}
+.react-tabs__tab-list {
+    font-size: 13px;
+    margin-bottom: 8px !important;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    border-bottom: none !important;
+}
+.react-tabs__tab.react-tabs__tab--selected {
+    background-color: transparent !important;
+    color:#fff !important;
+    border-bottom: 2px solid #fff !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+}
+.react-tabs__tab:focus {
+    background-color: transparent !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.react-tabs__tab:focus::after {
+    background: transparent !important;
+
+ }

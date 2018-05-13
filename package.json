@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "next",
+    "test": "nodemon --exec 'next'",
     "start": "next start",
     "build": "next build"
   },
@@ -12,10 +12,17 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^0.1.5",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "glob": "^7.1.2",
     "next": "^6.0.0",
+    "path": "^0.12.7",
+    "postcss-loader": "^2.1.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-tabs": "^2.2.2"
+    "react-tabs": "^2.2.2",
+    "rmwc": "^1.6.2",
+    "style-loader": "^0.21.0"
   },
   "devDependencies": {
     "@vx/axis": "0.0.162",

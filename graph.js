@@ -13,7 +13,7 @@ import {withParentSize} from '@vx/responsive'
 import {AxisBottom, AxisLeft} from '@vx/axis'
 const stock = appleStock.slice(800, 900);
 const formatDate = timeFormat("%b %d, '%y");
-console.log(stock)
+
 
 // accessors
 const xStock = d => new Date(d.date);
@@ -103,28 +103,21 @@ class Area extends React.Component {
               />
             </linearGradient>
           </defs>
+          <GridRows
+            lineStyle={{ pointerEvents: 'none' }}
+            scale={yScale}
+            width={xMax}
+            strokeDasharray="2,2"
+            stroke="rgba(255,255,255,0.4)"
+          />
+          <GridColumns
+            lineStyle={{ pointerEvents: 'none' }}
+            scale={xScale}
+            height={yMax}
+            strokeDasharray="2,2"
+            stroke="rgba(255,255,255,0.4)"
+          />
           
-          <AxisBottom
-        scale={xScale}
-        top={yMax + margin.top}
-        left={margin.left}
-        axisClassName="axis-class"
-        labelClassName="axis-label-class"
-        tickClassName="tick-label-class"
-
-        stroke="rgba(255,255,255,0.8)"
-        tickStroke="rgba(255,255,255,0.8)"
-      />
-      <AxisLeft
-        scale={yScale}
-        top={margin.top}
-        axisClassName="axis-class"
-        labelClassName="axis-label-class"
-        tickClassName="tick-label-class"
-        left={margin.left}
-        stroke="rgba(255,255,255,0.8)"
-        tickStroke="rgba(255,255,255,0.8)"
-      />
           <AreaClosed
             data={stock}
             xScale={xScale}

@@ -1,5 +1,4 @@
-import '../style.css'
-import 'react-tabs/style/react-tabs.css';
+
 import React from 'react'
 import Area from '../graph.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -43,16 +42,31 @@ export default class Index extends React.Component {
     <div className="portGraph">
                     <Area
                     margin={{
-                        top: 5,
-                        left:5,
-                        right:5,
-                        bottom:5
+                        top: 0,
+                        left:0,
+                        right:0,
+                        bottom:0
                     }}
                      />
                     </div>
     </TabPanel>
     <TabPanel>
-      <h2>Any content 2</h2>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
+    </TabPanel>
+    <TabPanel>
     </TabPanel>
   </Tabs>
                     
